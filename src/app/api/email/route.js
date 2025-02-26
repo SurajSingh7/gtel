@@ -4,7 +4,6 @@ import NewConnection from '@/models/newconnections';
 
 export async function POST(req) {
   try {
-    console.log('reached here');
     // Connect to the MongoDB database
     await connectDB();
 
@@ -109,9 +108,9 @@ export async function POST(req) {
         };
     
         // API URL & Credentials
-        const whatsappApiUrl = "http://10.253.71.78:8000/api/external/send-group-message";
-        const apiToken = "5Z3PLliyT5y02PL";
-        const groupId = "918826997461-1561020347@g.us";
+        const whatsappApiUrl = process.env.NEXT_PUBLIC_WHATSAPP_API;
+        const type = "gtel-website-inquiry";
+        const source = "gtel-website";
     
         // API Request
         const whatsappResponse = await fetch(whatsappApiUrl, {
@@ -120,11 +119,9 @@ export async function POST(req) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            groupId,
-            apiToken,
-            data: messageData, // Send data as an object
-            source: "gtel-website",
-            type: "gtel-website-inquiry"
+            data : messageData,
+            source,
+            type
           }),
         });
     
@@ -132,7 +129,7 @@ export async function POST(req) {
         if (!whatsappResponse.ok) {
           const errorDetails = await whatsappResponse.text();
           console.error("WhatsApp API Error:", errorDetails);
-          throw new Error(`Failed to send WhatsApp message: ${errorDetails}`);
+          // throw new Error(`Failed to send WhatsApp message: ${errorDetails}`);
         }
     
         console.log("WhatsApp Message Sent Successfully");
@@ -140,8 +137,6 @@ export async function POST(req) {
         console.error("Error sending WhatsApp message:", error.message);
       }
     }      
-  
-
 
     return new Response(
       JSON.stringify({ message: 'Emails, group message, and individual WhatsApp message sent successfully!' }),
