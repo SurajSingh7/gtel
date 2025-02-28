@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import LocationModal from "./LocationModal";
-
+import AnnouncementAnimation from "./AnnouncementAnimation";
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -47,6 +47,8 @@ const Header = () => {
           : "bg-gradient-to-r from-orange-500 via-amber-600 to-orange-500"
       } text-white fixed top-0 left-0 w-full z-50 transition-all ease-in-out duration-300`}
     >
+      <AnnouncementAnimation/>
+
       {/* Top Section - Contact Info, My Account, and Payment Links */}
       {/* <div className="flex flex-col md:flex-row items-center md:justify-between space-y-2 md:space-y-0 bg-gray-700 py-2 px-4"> */}
         <div

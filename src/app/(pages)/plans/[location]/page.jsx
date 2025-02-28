@@ -576,6 +576,9 @@ rental: "₹1200",
       6 Months, and 12 Months of Internet package.</strong>
     </li>
     <li>
+      <strong>⚠️ Important Information -: Due to the merger of Hotstar & Jio, the Hotstar subscription is on hold till further update from JioHotstar, please take the same in your kind consideration.</strong>
+    </li>
+    <li>
       User has to redeem the Amazon code as Lite only, and if the code has been
       redeemed as Prime, then Gigantic would not be able to help for any kind of
       issue in this regard for the current subscription or in the future unless
